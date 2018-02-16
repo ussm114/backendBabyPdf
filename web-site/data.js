@@ -22,8 +22,8 @@ var dataSchema = mongoose.Schema({
 dataSchema.methods.saveTo = function () {
   return this.save().then(() => {
     console.log('saved');
-  }).catch((e) => {
-    console.log(e);
+  }, () => {
+    console.log('saving failed!');
   });
 };
 

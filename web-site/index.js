@@ -14,7 +14,9 @@ app.post('/', function (req, res) {
   console.log(body);
   var data = new Data(body);
   console.log(data);
-  data.saveTo();
+  data.saveTo().catch((e) => {
+    res.send({text: 'error occured', message: e.message});
+  });
   res.send(body);
   // console.log(`name: ${name}, mass: ${mass}, eyes: ${eyes}, email: ${email}`);
   // res.send(`name: ${name}, mass: ${mass}, eyes: ${eyes}, email: ${email}`);
