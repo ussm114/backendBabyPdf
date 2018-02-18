@@ -26,3 +26,14 @@ $('#loves').html('insert my text :)'); // jw, ale krócej
 //now data from replaceValues is injected into divs in htmlSource. we save the html to changedHtml variable
 var changedHtml = $.html();
 console.log(changedHtml);
+
+//---------======= conv to pdf =================----------------
+
+var pdf = require('html-pdf');
+
+var options = { format: 'A4' };
+
+pdf.create(changedHtml, options).toFile('dyplomyPdf/dyplom.pdf', function(err, res) {
+  if (err) return console.log(err);
+  console.log(res); // { filename: '/app/businesscard.pdf' }
+});
