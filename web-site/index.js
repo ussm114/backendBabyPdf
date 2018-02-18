@@ -10,14 +10,16 @@ app.use(bodyParser.json('application/json'));
 
 app.post('/', function (req, res) {
   // var {email, name, mass, eyes} = req.body;
-  var body = req.body;
-  console.log(body);
-  var data = new Data(body);
+  var data = new Data(req.body);
   console.log(data);
-  data.saveTo().catch((e) => {
+  data.saveTo().then(() => {
+    console.log('saved');
+    res.send("your child's data was saved to db");
+  }).catch((e) => {
+    console.log('saving failed');
     res.send({text: 'error occured', message: e.message});
   });
-  res.send(body);
+  // res.send(body);
   // console.log(`name: ${name}, mass: ${mass}, eyes: ${eyes}, email: ${email}`);
   // res.send(`name: ${name}, mass: ${mass}, eyes: ${eyes}, email: ${email}`);
 });

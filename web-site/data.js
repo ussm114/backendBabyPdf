@@ -20,28 +20,13 @@ var dataSchema = mongoose.Schema({
 });
 
 dataSchema.methods.saveTo = function () {
-  return this.save().then(() => {
-    console.log('saved');
-  }, () => {
-    console.log('saving failed!');
-  });
+  //na tę chwilę tyle wystarczy
+  return this.save();
+  // return this.save().then(() => {
+  //   return console.log('saved');
+  // }, () => {
+  //   return console.log('saving failed!');
+  // });
 };
 
 Data = exports.Data = mongoose.model('Data', dataSchema);
-
-
-
-
-
-
-// var addRandomCat = function () {
-//   var silence = new Kitten({
-//     name: 'silencee' + Math.random()
-//   });
-//   silence.save(function (err, fluffy) {
-//     if(err) {
-//       return console.error(err);
-//     }
-//     console.log('ther is new rand cat ....');
-//   });
-// };
